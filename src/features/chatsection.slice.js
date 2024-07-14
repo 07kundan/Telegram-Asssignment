@@ -11,7 +11,7 @@ const chatSectionSlice = createSlice({
   reducers: {
     setChatSectoin: (state, action) => {
       state.chatname = action.payload;
-      state.isOpen = !state.isOpen;
+      action.payload ? (state.isOpen = true) : (state.isOpen = false);
     },
   },
 });

@@ -35,7 +35,7 @@ function ChatList({ content }) {
     dispatch(setChatSectoin(content?.creator));
   };
   return (
-    <div className="w-full px-2 border-t border-black">
+    <div className="w-full px-2 border-t border-slate-950 md:py-2 md:px-3">
       {/* profile Pic */}
       <button
         className="w-full flex items-center space-x-4"
@@ -43,22 +43,22 @@ function ChatList({ content }) {
           handlechat(content?.creator);
         }}
       >
-        <div className="h-20 w-20 flex justify-center items-center">
+        <div className="h-20 w-20 flex justify-center items-center md:h-12 md:w-12">
           <img src={`${profile}`} alt="img" />
         </div>
 
         {/* chat section */}
-        <div className="w-full ">
+        <div className="w-full">
           <div className="flex justify-between">
-            <div className=" text-left">
-              <div className="font-semibold tracking-tight">
+            <div className=" text-left md:space-y-1">
+              <div className="font-semibold tracking-tight md:tracking-normal md:text-sm">
                 {content?.creator?.name ||
                   content?.creator?.email ||
                   content.creator.city}
               </div>
-              <div className="text-sm">Message</div>
+              <div className="text-sm md:text-xs">Message</div>
             </div>
-            <span className="text-sm"> {time}</span>
+            <span className="text-sm md:text-[11px]"> {time}</span>
           </div>
         </div>
       </button>

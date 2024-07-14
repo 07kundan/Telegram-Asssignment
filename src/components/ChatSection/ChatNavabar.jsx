@@ -47,18 +47,18 @@ function ChatNavabar() {
   };
 
   return (
-    <IconContext.Provider value={{ className: "text-2xl " }}>
-      <div className="fixed w-full top-0 flex items-center justify-between px-2 py-2 bg-zinc-800">
+    <IconContext.Provider value={{ className: "text-2xl md:text-xl" }}>
+      <div className="fixed w-[65vw] top-0 flex items-center justify-between px-2 py-3 bg-slate-800 md:py-2 md:pr-6">
         <div className="inline-flex items-center space-x-5">
-          <button onClick={handleClickBackToChatlist}>
+          <button className="md:hidden" onClick={handleClickBackToChatlist}>
             <BsArrowLeft />
           </button>
-          <div className="inline-flex space-x-2">
-            <span className="h-10 w-10 ">
+          <div className="inline-flex items-center space-x-2">
+            <span className="h-10 w-10 md:w-8 md:h-8">
               <img src={`${Image}`} alt="" />
             </span>
 
-            <div className="leading-tight ">
+            <div className="leading-tight text-sm md:leading-normal">
               <div className="tracking-tighter font-semibold">{chatName}</div>
               <span className="text-xs font-light">recently</span>
             </div>
@@ -74,7 +74,7 @@ function ChatNavabar() {
           </button>
         </div>
         {dotMenu && (
-          <div className="absolute top-0 right-1 w-1/2 bg-zinc-800 rounded-md">
+          <div className="absolute top-0 right-1 w-1/2 bg-slate-800 rounded-md py-2 md:w-1/4">
             <ul>
               <li className="flex items-center py-4 justify-between pr-3 border-b-2 border-black pl-4">
                 <div className="inline-flex items-center space-x-4 tracking-tight">
@@ -89,7 +89,7 @@ function ChatNavabar() {
               </li>
               {MenuItem.map((item) => (
                 <li
-                  className="inline-flex items-center space-x-4 py-3 pl-4 tracking-tight"
+                  className="flex items-center space-x-4 py-3 pl-4 tracking-tight"
                   key={item.title}
                 >
                   <span>{item.icon}</span>

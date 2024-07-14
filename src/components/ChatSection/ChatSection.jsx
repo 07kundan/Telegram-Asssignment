@@ -8,13 +8,13 @@ import { IconContext } from "react-icons";
 
 export function BottomInput() {
   return (
-    <IconContext.Provider value={{ className: "text-xl " }}>
-      <div className="w-full fixed bottom-0 bg-zinc-800 px-4 py-2.5 h-[50px] space-x-3 inline-flex items-center">
+    <IconContext.Provider value={{ className: "text-xl" }}>
+      <div className="w-full fixed bottom-0 bg-slate-800 px-4 py-2.5 h-[50px] space-x-3 inline-flex items-center md:w-[65vw] md:h-12 md:py-2">
         <button>
           <BsEmojiAngryFill />
         </button>
         <input
-          className="w-full bg-transparent border-none active:border-none"
+          className="w-full bg-transparent border-none active:border-none md:text-sm md:h-full"
           type="text"
           placeholder="Message"
         />

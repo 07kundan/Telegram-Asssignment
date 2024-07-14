@@ -33,7 +33,7 @@ function Sidebar() {
             </React.Fragment>
           );
         })}
-      <div className="bg-lime-800" ref={ref}></div>
+      <div className="" ref={ref}></div>
       {isFetching && <Loader />}
       {/* {!hasMore && <p>No more data</p>} */}
     </div>

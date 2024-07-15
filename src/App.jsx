@@ -7,12 +7,13 @@ import "./App.css";
 
 function App() {
   const isOpen = useSelector((state) => state.chatSection.isOpen);
+
   return (
     <>
       <div className="text-white sm:flex md:h-screen bg-slate-900">
         <div className="md:hidden">
           {!isOpen && (
-            <div className="w-full min-h-full bg-slate-900 overflow-y-scroll sm:min-w-[35vw]">
+            <div className="w-full min-h-screen bg-slate-900 overflow-y-scroll sm:min-w-[35vw]">
               <Navbar />
               <Sidebar />
             </div>
@@ -29,7 +30,7 @@ function App() {
             <ChatSection />
           </div>
         ) : (
-          <div className="w-full md:w-[65vw] flex items-center justify-center">
+          <div className="hidden w-full md:w-[65vw] md:flex items-center justify-center">
             <span className="border px-3 py-1 text-sm rounded-full bg-slate-800">
               selet a chat to view messages
             </span>

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isActiveId: null,
+  //   reference: null,
 };
 
 const chatListActiveSlice = createSlice({

@@ -49,7 +49,7 @@ function ChatSection() {
     const fetchData = async () => {
       setChat([]);
       const data = await getChat();
-      console.log(data);
+      // console.log(data);
       setChat(data);
       setLoader(false);
     };

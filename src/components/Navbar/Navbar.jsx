@@ -15,6 +15,8 @@ import {
   MdOutlineFeaturedPlayList,
 } from "react-icons/md";
 import { IconContext } from "react-icons";
+import "./sideMenu.css";
+import { CSSTransition } from "react-transition-group";
 
 const menuList = [
   {
@@ -36,6 +38,7 @@ const menuList = [
   },
 ];
 
+// subcomponent
 export function SideMenu({ setMenu }) {
   const [on, setOff] = useState(true);
 
@@ -100,13 +103,14 @@ export function SideMenu({ setMenu }) {
   );
 }
 
+// main component
 function Navbar() {
   const [menu, setMenu] = useState(false);
 
   return (
     <IconContext.Provider value={{ className: "text-2xl md:text-lg" }}>
-      <div className="w-full sticky top-0 bg-slate-800 ">
-        <div className=" h-[75px] flex items-center justify-between px-4 text-xl md:h-11 md:space-x-4">
+      <div className="w-full fixed top-0 bg-slate-800 md:w-[35vw]">
+        <div className=" h-[65px] bg-slate-900 flex items-center justify-between px-4 text-xl md:h-11 md:space-x-4">
           <div className="flex items-center justify-center gap-6">
             <button onClick={() => setMenu(!menu)}>
               <GiHamburgerMenu />
@@ -123,7 +127,14 @@ function Navbar() {
           </span>
         </div>
 
-        {menu && <SideMenu setMenu={setMenu} />}
+        <CSSTransition
+          in={menu}
+          timeout={300}
+          classNames="side-menu"
+          unmountOnExit
+        >
+          <SideMenu setMenu={setMenu} />
+        </CSSTransition>
       </div>
     </IconContext.Provider>
   );

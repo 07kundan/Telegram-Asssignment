@@ -1,0 +1,22 @@
+/* DotMenu.css */
+.dot-menu-enter {
+  opacity: 0;
+  transform: translateY(-10%);
+}
+
+.dot-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.dot-menu-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dot-menu-exit-active {
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}

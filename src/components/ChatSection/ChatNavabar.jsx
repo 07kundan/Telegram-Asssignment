@@ -7,6 +7,8 @@ import { MdClear, MdDelete, MdVideoCall, MdWallpaper } from "react-icons/md";
 import { GoMute } from "react-icons/go";
 import { IconContext } from "react-icons";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import "./dotMenu.css";
+import { CSSTransition } from "react-transition-group";
 
 const MenuItem = [
   {
@@ -33,7 +35,6 @@ const MenuItem = [
 
 function ChatNavabar() {
   const [dotMenu, setDotMenu] = useState(false);
-
   const dispatch = useDispatch();
   const chatName = useSelector(
     (state) =>
@@ -44,6 +45,7 @@ function ChatNavabar() {
 
   const handleClickBackToChatlist = function () {
     dispatch(setChatSectoin(null));
+    // console.log("he");
   };
 
   return (
@@ -73,7 +75,12 @@ function ChatNavabar() {
             <BiDotsVertical />
           </button>
         </div>
-        {dotMenu && (
+        <CSSTransition
+          in={dotMenu}
+          timeout={300}
+          classNames="dot-menu"
+          unmountOnExit
+        >
           <div className="absolute top-0 right-1 w-1/2 bg-slate-800 rounded-md py-2 md:w-1/4">
             <ul>
               <li className="flex items-center py-4 justify-between pr-3 border-b-2 border-black pl-4">
@@ -98,7 +105,7 @@ function ChatNavabar() {
               ))}
             </ul>
           </div>
-        )}
+        </CSSTransition>
       </div>
     </IconContext.Provider>
   );

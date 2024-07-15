@@ -15,12 +15,12 @@ function Sidebar() {
     // console.log("isinview", data);
   }, [inView]);
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-full ">
+    <div className="min-h-screen mt-[65px] md:mt-11">
       {/* {console.log(data)} */}
       {isFetched &&
         data?.pages.map((page, index) => {

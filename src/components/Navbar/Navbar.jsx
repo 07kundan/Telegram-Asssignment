@@ -73,7 +73,7 @@ export function SideMenu({ setMenu }) {
                     : dispatch(setTheme("dark"));
                 }}
               >
-                {on ? <BsToggleOn /> : <BsToggleOff />}
+                {theme === "dark" ? <BsToggleOn /> : <BsToggleOff />}
               </button>
             </span>
           </div>
@@ -112,7 +112,7 @@ export function SideMenu({ setMenu }) {
                   : dispatch(setTheme("dark"));
               }}
             >
-              {on ? <BsToggleOn /> : <BsToggleOff />}
+              {theme === "dark" ? <BsToggleOn /> : <BsToggleOff />}
             </button>
           </li>
         </ul>

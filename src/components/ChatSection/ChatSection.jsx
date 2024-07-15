@@ -13,7 +13,7 @@ import Loader from "../Loader/Loader";
 export function BottomInput() {
   return (
     <IconContext.Provider value={{ className: "text-xl" }}>
-      <div className="w-full fixed bottom-0  px-4 py-2.5 h-[50px] space-x-3 inline-flex items-center md:w-[65vw] md:h-12 md:py-2 bg-white dark:bg-slate-700">
+      <div className="w-full fixed bottom-0  px-4 py-2.5 h-[50px] space-x-3 inline-flex items-center md:w-[65vw] md:h-12 md:py-2 bg-slate-200 dark:bg-slate-700">
         <button>
           <BsEmojiAngryFill />
         </button>

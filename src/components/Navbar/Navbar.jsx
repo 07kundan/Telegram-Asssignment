@@ -46,21 +46,10 @@ export function SideMenu({ setMenu }) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme);
 
-  // theme
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-  // ------
-
   return (
     <IconContext.Provider value={{ className: "w-6 h-6 text-slate-500" }}>
-      <div className="absolute top-0 left-0 w-4/5 h-screen  md:w-[20vw] md:h-screen bg-white dark:text-slate-200/80 dark:bg-slate-900 ">
-        <div className=" h-[75px] w-full flex items-center justify-end pr-4 border-b md:h-11 border-black dark:bg-slate-800">
+      <div className="absolute top-0 left-0 w-4/5 h-screen  md:w-[20vw] md:h-screen bg-slate-200 dark:text-slate-200/80 dark:bg-slate-900 ">
+        <div className=" h-[75px] w-full flex items-center justify-end pr-4 border-b md:h-11 border-black bg-slate-300 dark:bg-slate-800">
           <button
             className="text-3xl animate-bounce"
             onClick={() => setMenu(false)}
@@ -75,7 +64,7 @@ export function SideMenu({ setMenu }) {
               <img src={`${Image}`} alt="" />
             </div>
             <span className="flex gap-2 md:hidden">
-              {on ? <MdNightlight /> : <MdLightMode />}
+              {theme === "dark" ? <MdNightlight /> : <MdLightMode />}
               <button
                 onClick={() => {
                   setOff(!on);
@@ -110,7 +99,9 @@ export function SideMenu({ setMenu }) {
           )}
           <li className="hidden md:flex items-center justify-between md:h-12 md:font-semibold  md:pl-4 md:pr-8 dark:hover:bg-blue-400/20">
             <div className="flex gap-5">
-              <span>{on ? <MdLightMode /> : <MdNightlight />}</span>
+              <span>
+                {theme === "light" ? <MdLightMode /> : <MdNightlight />}
+              </span>
               <span>Night Mode</span>
             </div>
             <button
@@ -121,7 +112,7 @@ export function SideMenu({ setMenu }) {
                   : dispatch(setTheme("dark"));
               }}
             >
-              {on ? <BsToggleOff /> : <BsToggleOn />}
+              {on ? <BsToggleOn /> : <BsToggleOff />}
             </button>
           </li>
         </ul>
@@ -136,8 +127,8 @@ function Navbar() {
 
   return (
     <IconContext.Provider value={{ className: "text-2xl md:text-lg" }}>
-      <div className="w-full fixed top-0  md:w-[35vw] dark:bg-slate-800">
-        <div className=" h-[65px] flex items-center justify-between px-4 text-xl md:h-11 md:space-x-4 dark:bg-slate-900 ">
+      <div className="w-full fixed top-0  md:w-[35vw] bg-slate-200 dark:bg-slate-800">
+        <div className=" h-[65px] flex items-center justify-between px-4 text-xl md:py-2 md:h-12 md:space-x-4 bg-slate-300 dark:bg-slate-900 ">
           <div className="flex items-center justify-center gap-6">
             <button onClick={() => setMenu(!menu)}>
               <GiHamburgerMenu />
@@ -146,7 +137,7 @@ function Navbar() {
           </div>
 
           <input
-            className="hidden md:block w-full rounded-full h-8 bg-slate-300/30 focus:outline-none focus:border-2 border-slate-400 dark:bg-slate-700/60"
+            className="hidden md:block w-full rounded-full h-8 bg-slate-600/30 focus:outline-none focus:border-2 border-slate-400 dark:bg-slate-700/60"
             type="search"
           />
           <span className="md:hidden">

@@ -33,8 +33,8 @@ function ChatList({ content }) {
       }}
       className={`w-full px-2 border-t  md:py-2.5 md:px-3 dark:border-slate-950 ${
         listId == content?.id
-          ? " dark:bg-blue-500/30"
-          : "hover:bg-blue-400 dark:bg-slate-800 dark:hover:bg-blue-400/20"
+          ? "bg-slate-400/30 dark:bg-blue-500/30"
+          : "hover:bg-blue-400/20 dark:bg-slate-800 dark:hover:bg-blue-400/20"
       }`}
     >
       {/* profile Pic */}

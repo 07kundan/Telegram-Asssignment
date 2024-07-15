@@ -50,7 +50,7 @@ function ChatNavabar() {
 
   return (
     <IconContext.Provider value={{ className: "text-2xl md:text-xl" }}>
-      <div className="fixed w-full top-0 flex items-center justify-between px-2 py-3 md:py-2 md:pr-6 md:w-[65vw] bg-white dark:bg-slate-800 ">
+      <div className="fixed w-full top-0 flex items-center justify-between px-2 py-3 md:py-2 md:pr-6 md:w-[65vw] bg-slate-200 dark:bg-slate-800 ">
         <div className="inline-flex items-center space-x-5">
           <button className="md:hidden" onClick={handleClickBackToChatlist}>
             <BsArrowLeft />
@@ -81,7 +81,7 @@ function ChatNavabar() {
           classNames="dot-menu"
           unmountOnExit
         >
-          <div className="absolute top-1 right-2 w-1/2 rounded-md py-2 md:w-1/4 border border-slate-600/40 bg-white dark:bg-slate-800">
+          <div className="absolute top-1 right-2 w-1/2 rounded-md py-2 md:w-1/4 border border-slate-600/40 bg-slate-200 dark:bg-slate-800">
             <ul>
               <li className="flex items-center py-4 justify-between pr-3 border-b-2 border-black pl-4">
                 <div className="inline-flex items-center space-x-4 tracking-tight">

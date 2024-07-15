@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import profile from "../../public/profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setChatSectoin } from "../features/chatsection.slice";
-import { setChatListActive } from "../features/chatListActive";
+import { setChatListActive } from "../features/chatListActive.slice";
 
 function ChatList({ content }) {
   const [time, setTime] = useState();
@@ -31,10 +31,10 @@ function ChatList({ content }) {
         dispatch(setChatListActive(content?.id));
         // console.log(content);
       }}
-      className={`w-full px-2 border-t border-slate-950 md:py-2.5 md:px-3  ${
+      className={`w-full px-2 border-t  md:py-2.5 md:px-3 dark:border-slate-950 ${
         listId == content?.id
-          ? "bg-blue-500/30"
-          : "bg-slate-800 hover:bg-blue-400/20"
+          ? " dark:bg-blue-500/30"
+          : "hover:bg-blue-400 dark:bg-slate-800 dark:hover:bg-blue-400/20"
       }`}
     >
       {/* profile Pic */}

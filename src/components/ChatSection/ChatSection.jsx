@@ -13,7 +13,7 @@ import Loader from "../Loader/Loader";
 export function BottomInput() {
   return (
     <IconContext.Provider value={{ className: "text-xl" }}>
-      <div className="w-full fixed bottom-0 bg-slate-800 px-4 py-2.5 h-[50px] space-x-3 inline-flex items-center md:w-[65vw] md:h-12 md:py-2">
+      <div className="w-full fixed bottom-0  px-4 py-2.5 h-[50px] space-x-3 inline-flex items-center md:w-[65vw] md:h-12 md:py-2 bg-white dark:bg-slate-700">
         <button>
           <BsEmojiAngryFill />
         </button>
@@ -66,14 +66,13 @@ function ChatSection() {
       <ChatNavabar />
 
       {loader && <Loader />}
-
-      <div className="w-full pl-4 mt-[73px] mb-[60px] md:pl-7 ">
+      <div className="w-full  pl-4 pt-[73px] pb-[60px] md:pl-7 bg-amber-700/30 dark:bg-slate-800">
         {chat.map((data, index) => (
           <div className="" key={index}>
             {/* date */}
             {data?.created_at && (
               <div className="w-full text-center mt-5 mb-2 md:w-[40vw] ">
-                <span className="px-3 py-1 text-sm bg-blue-500/30 rounded-full">
+                <span className="px-3 py-1 text-sm  rounded-full bg-blue-500/30 dark:bg-blue-500/30">
                   {data?.created_at}
                 </span>
               </div>
@@ -90,7 +89,9 @@ function ChatSection() {
               </span>
               <div
                 className={`w-[70vw]  mt-2 px-3 py-1 rounded-lg text-sm md:mt-2 md:max-w-[38vw] ${
-                  data?.sender_id == "1" ? "bg-blue-400/30" : "bg-slate-800"
+                  data?.sender_id == "1"
+                    ? "bg-white/60 dark:bg-blue-400/30"
+                    : "bg-blue-500/30 dark:bg-slate-800"
                 }`}
               >
                 <span className="">{data?.message}</span>
@@ -100,6 +101,7 @@ function ChatSection() {
         ))}
         <div ref={messagesEndRef}></div>
       </div>
+
       <BottomInput />
     </div>
   );

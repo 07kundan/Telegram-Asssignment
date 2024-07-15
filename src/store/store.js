@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import chatsectionSlice from "../features/chatsection.slice";
-import chatListActive from "../features/chatListActive";
+import themeSlice from "../features/theme.slice";
+import chatListActiveSlice from "../features/chatListActive.slice";
 
 const store = configureStore({
   reducer: {
     chatSection: chatsectionSlice,
-    chatList: chatListActive,
+    chatList: chatListActiveSlice,
+    theme: themeSlice,
   },
 });
 

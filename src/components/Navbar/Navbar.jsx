@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CgClose, CgProfile } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -17,6 +17,8 @@ import {
 import { IconContext } from "react-icons";
 import "./sideMenu.css";
 import { CSSTransition } from "react-transition-group";
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from "../../features/theme.slice";
 
 const menuList = [
   {
@@ -41,11 +43,24 @@ const menuList = [
 // subcomponent
 export function SideMenu({ setMenu }) {
   const [on, setOff] = useState(true);
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme.theme);
+
+  // theme
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  // ------
 
   return (
     <IconContext.Provider value={{ className: "w-6 h-6 text-slate-500" }}>
-      <div className="bg-slate-900 absolute top-0 left-0 w-4/5 h-screen text-slate-200/80 md:w-[20vw] md:h-screen">
-        <div className="bg-slate-800 h-[75px] w-full flex items-center justify-end pr-4 border-b border-black md:h-11">
+      <div className="absolute top-0 left-0 w-4/5 h-screen  md:w-[20vw] md:h-screen bg-white dark:text-slate-200/80 dark:bg-slate-900 ">
+        <div className=" h-[75px] w-full flex items-center justify-end pr-4 border-b md:h-11 border-black dark:bg-slate-800">
           <button
             className="text-3xl animate-bounce"
             onClick={() => setMenu(false)}
@@ -61,7 +76,14 @@ export function SideMenu({ setMenu }) {
             </div>
             <span className="flex gap-2 md:hidden">
               {on ? <MdNightlight /> : <MdLightMode />}
-              <button onClick={() => setOff(!on)}>
+              <button
+                onClick={() => {
+                  setOff(!on);
+                  theme === "dark"
+                    ? dispatch(setTheme("light"))
+                    : dispatch(setTheme("dark"));
+                }}
+              >
                 {on ? <BsToggleOn /> : <BsToggleOff />}
               </button>
             </span>
@@ -78,7 +100,7 @@ export function SideMenu({ setMenu }) {
             (list) =>
               list.bigscreen && (
                 <li
-                  className="h-12 pl-5 flex items-center gap-4 md:gap-5 md:h-11 md:font-semibold hover:bg-blue-400/20 md:pl-4"
+                  className="h-12 pl-5 flex items-center gap-4 md:gap-5 md:h-11 md:font-semibold md:pl-4 dark:hover:bg-blue-400/20"
                   key={list.title}
                 >
                   <span>{list.icon}</span>
@@ -86,15 +108,20 @@ export function SideMenu({ setMenu }) {
                 </li>
               )
           )}
-          <li className="hidden md:flex items-center justify-between md:h-12 md:font-semibold hover:bg-blue-400/20 md:pl-4 md:pr-8">
+          <li className="hidden md:flex items-center justify-between md:h-12 md:font-semibold  md:pl-4 md:pr-8 dark:hover:bg-blue-400/20">
             <div className="flex gap-5">
-              <span>
-                <MdNightlight />
-              </span>
+              <span>{on ? <MdLightMode /> : <MdNightlight />}</span>
               <span>Night Mode</span>
             </div>
-            <button onClick={() => setOff(!on)}>
-              {on ? <BsToggleOn /> : <BsToggleOff />}
+            <button
+              onClick={() => {
+                setOff(!on);
+                theme === "dark"
+                  ? dispatch(setTheme("light"))
+                  : dispatch(setTheme("dark"));
+              }}
+            >
+              {on ? <BsToggleOff /> : <BsToggleOn />}
             </button>
           </li>
         </ul>
@@ -109,8 +136,8 @@ function Navbar() {
 
   return (
     <IconContext.Provider value={{ className: "text-2xl md:text-lg" }}>
-      <div className="w-full fixed top-0 bg-slate-800 md:w-[35vw]">
-        <div className=" h-[65px] bg-slate-900 flex items-center justify-between px-4 text-xl md:h-11 md:space-x-4">
+      <div className="w-full fixed top-0  md:w-[35vw] dark:bg-slate-800">
+        <div className=" h-[65px] flex items-center justify-between px-4 text-xl md:h-11 md:space-x-4 dark:bg-slate-900 ">
           <div className="flex items-center justify-center gap-6">
             <button onClick={() => setMenu(!menu)}>
               <GiHamburgerMenu />
@@ -119,7 +146,7 @@ function Navbar() {
           </div>
 
           <input
-            className="hidden md:block w-full rounded-full h-8 bg-slate-700/60"
+            className="hidden md:block w-full rounded-full h-8 bg-slate-300/30 focus:outline-none focus:border-2 border-slate-400 dark:bg-slate-700/60"
             type="search"
           />
           <span className="md:hidden">

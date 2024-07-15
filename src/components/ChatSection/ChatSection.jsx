@@ -87,14 +87,16 @@ function ChatSection() {
                   alt=""
                 />
               </span>
-              <div
-                className={`w-[70vw]  mt-2 px-3 py-1 rounded-lg text-sm md:mt-2 md:max-w-[38vw] ${
-                  data?.sender_id == "1"
-                    ? "bg-white/60 dark:bg-blue-400/30"
-                    : "bg-blue-500/30 dark:bg-slate-800"
-                }`}
-              >
-                <span className="">{data?.message}</span>
+              <div className="w-[70vw] md:max-w-[38vw] ">
+                <div
+                  className={`mt-2 px-3 py-1 rounded-lg text-sm md:mt-2 inline-flex ${
+                    data?.sender_id == "1"
+                      ? "bg-white/60 dark:bg-blue-400/30"
+                      : "bg-blue-500/30 dark:bg-slate-700/70"
+                  }`}
+                >
+                  <span className="">{data?.message}</span>
+                </div>
               </div>
             </div>
           </div>

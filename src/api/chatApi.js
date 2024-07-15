@@ -8,11 +8,8 @@ const API = axios.create({
 
 export const getChat = async () => {
   try {
-    // const url = new URL(`${BASE_URL}`);
-    // if (page) url.searchParams.set("page", page);
-    // console.log(url.href);
     const { data } = await axios.get(`${BASE_URL}`);
-    console.log("apidata", data?.data);
+    // console.log("apidata", data?.data);
     let arrayData = data?.data;
     arrayData.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
     const updatedData = arrayData.map((item) => ({
@@ -35,7 +32,7 @@ export const getChat = async () => {
       return acc;
     }, []);
 
-    console.log("updated", uniqueData);
+    // console.log("updated", uniqueData);
     return uniqueData;
   } catch (error) {
     console.log(error);

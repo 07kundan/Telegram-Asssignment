@@ -6,10 +6,14 @@ import Image from "../../../public/profile.png";
 import { FaPersonRifle } from "react-icons/fa6";
 import { GrGroup } from "react-icons/gr";
 import { FcContacts, FcInvite } from "react-icons/fc";
-import { IoCallSharp } from "react-icons/io5";
-import { BsPeopleFill } from "react-icons/bs";
+import { IoCall, IoCallSharp } from "react-icons/io5";
+import { BsPeopleFill, BsToggleOff, BsToggleOn } from "react-icons/bs";
 import { LuBookMarked } from "react-icons/lu";
-import { MdNightlight, MdOutlineFeaturedPlayList } from "react-icons/md";
+import {
+  MdLightMode,
+  MdNightlight,
+  MdOutlineFeaturedPlayList,
+} from "react-icons/md";
 import { IconContext } from "react-icons";
 
 const menuList = [
@@ -20,7 +24,7 @@ const menuList = [
   },
   { icon: <FaPersonRifle />, title: "New Group", bigscreen: true },
   { icon: <GrGroup />, title: "Contacts", bigscreen: true },
-  { icon: <FcContacts />, title: "Calls", bigscreen: true },
+  { icon: <IoCall />, title: "Calls", bigscreen: true },
   { icon: <IoCallSharp />, title: "People Nearby", bigscreen: false },
   { icon: <BsPeopleFill />, title: "Saved Message", bigscreen: true },
   { icon: <LuBookMarked />, title: "Settings", bigscreen: true },
@@ -33,9 +37,11 @@ const menuList = [
 ];
 
 export function SideMenu({ setMenu }) {
+  const [on, setOff] = useState(true);
+
   return (
     <IconContext.Provider value={{ className: "w-6 h-6 text-slate-500" }}>
-      <div className="bg-slate-900 absolute top-0 left-0 w-4/5 h-screen md:w-[20vw] md:h-screen">
+      <div className="bg-slate-900 absolute top-0 left-0 w-4/5 h-screen text-slate-200/80 md:w-[20vw] md:h-screen">
         <div className="bg-slate-800 h-[75px] w-full flex items-center justify-end pr-4 border-b border-black md:h-11">
           <button
             className="text-3xl animate-bounce"
@@ -45,28 +51,31 @@ export function SideMenu({ setMenu }) {
           </button>
         </div>
 
-        <div className="mt-3 pl-5 md:mt-2 md:pl-4">
+        <div className="mt-3 pl-5 md:mt-3 md:pl-4">
           <div className="flex items-center justify-between pr-5 ">
             <div className="h-20 w-20 md:h-14 md:w-14">
               <img src={`${Image}`} alt="" />
             </div>
-            <span>
-              <button>toogle</button>
+            <span className="flex gap-2 md:hidden">
+              {on ? <MdNightlight /> : <MdLightMode />}
+              <button onClick={() => setOff(!on)}>
+                {on ? <BsToggleOn /> : <BsToggleOff />}
+              </button>
             </span>
           </div>
 
           <div className=" flex flex-col gap-1 mt-3 py-2 md:mt-2 md:py-1 md:gap-0">
             <span className="font-semibold ">Kundan Kumar</span>
-            <span className="text-sm md:text-xs">+91 7634881182</span>
+            <span className="text-sm md:text-sm">+91 7634881182</span>
           </div>
         </div>
 
-        <ul className="pl-5 mt-4 md:pl-4">
+        <ul className=" mt-4 ">
           {menuList.map(
             (list) =>
               list.bigscreen && (
                 <li
-                  className="h-12 flex items-center gap-4 md:gap-5 md:h-11 md:text-sm md:font-semibold"
+                  className="h-12 pl-5 flex items-center gap-4 md:gap-5 md:h-11 md:font-semibold hover:bg-blue-400/20 md:pl-4"
                   key={list.title}
                 >
                   <span>{list.icon}</span>
@@ -74,12 +83,16 @@ export function SideMenu({ setMenu }) {
                 </li>
               )
           )}
-          <li className="hidden md:flex items-center gap-4 md:gap-5 md:h-12 md:text-sm md:font-semibold">
-            <span>
-              <MdNightlight />
-            </span>
-            <span>Night Mode</span>
-            <input className="" type="radio" />
+          <li className="hidden md:flex items-center justify-between md:h-12 md:font-semibold hover:bg-blue-400/20 md:pl-4 md:pr-8">
+            <div className="flex gap-5">
+              <span>
+                <MdNightlight />
+              </span>
+              <span>Night Mode</span>
+            </div>
+            <button onClick={() => setOff(!on)}>
+              {on ? <BsToggleOn /> : <BsToggleOff />}
+            </button>
           </li>
         </ul>
       </div>

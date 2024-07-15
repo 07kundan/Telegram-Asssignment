@@ -8,6 +8,7 @@ import { getChat } from "../../api/chatApi";
 import { useSelector } from "react-redux";
 import Image from "../../../public/profile.png";
 import Image2 from "../../../public/profile2.jpeg";
+import Loader from "../Loader/Loader";
 
 export function BottomInput() {
   return (
@@ -17,7 +18,7 @@ export function BottomInput() {
           <BsEmojiAngryFill />
         </button>
         <input
-          className="w-full bg-transparent border-none active:border-none md:text-sm md:h-full"
+          className="w-full bg-transparent border-none active:border-none md:text-sm md:h-full focus:outline-none"
           type="text"
           placeholder="Message"
         />
@@ -33,6 +34,7 @@ export function BottomInput() {
 }
 
 function ChatSection() {
+  const [loader, setLoader] = useState(false);
   const [chat, setChat] = useState([]);
   const messagesEndRef = useRef(null);
   const chatName = useSelector(
@@ -43,11 +45,13 @@ function ChatSection() {
   );
 
   useEffect(() => {
+    setLoader(true);
     const fetchData = async () => {
       setChat([]);
       const data = await getChat();
       console.log(data);
       setChat(data);
+      setLoader(false);
     };
     fetchData();
   }, [chatName]);
@@ -60,7 +64,10 @@ function ChatSection() {
   return (
     <div className="min-h-screen">
       <ChatNavabar />
-      <div className="w-full pl-4 mb-[60px] md:pl-7 ">
+
+      {loader && <Loader />}
+
+      <div className="w-full pl-4 mt-[73px] mb-[60px] md:pl-7 ">
         {chat.map((data, index) => (
           <div className="" key={index}>
             {/* date */}
@@ -82,7 +89,7 @@ function ChatSection() {
                 />
               </span>
               <div
-                className={`w-[70vw]  mt-2 px-3 py-1 rounded-lg text-sm md:mt-3 md:max-w-[38vw] ${
+                className={`w-[70vw]  mt-2 px-3 py-1 rounded-lg text-sm md:mt-2 md:max-w-[38vw] ${
                   data?.sender_id == "1" ? "bg-blue-400/30" : "bg-slate-800"
                 }`}
               >

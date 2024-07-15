@@ -48,7 +48,7 @@ function ChatNavabar() {
 
   return (
     <IconContext.Provider value={{ className: "text-2xl md:text-xl" }}>
-      <div className="fixed w-[65vw] top-0 flex items-center justify-between px-2 py-3 bg-slate-800 md:py-2 md:pr-6">
+      <div className="sticky w-full top-0 flex items-center justify-between px-2 py-3 bg-slate-800 md:py-2 md:pr-6 md:w-[65vw]">
         <div className="inline-flex items-center space-x-5">
           <button className="md:hidden" onClick={handleClickBackToChatlist}>
             <BsArrowLeft />

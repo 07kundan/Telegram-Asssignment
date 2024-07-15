@@ -35,7 +35,7 @@ function ChatList({ content }) {
     dispatch(setChatSectoin(content?.creator));
   };
   return (
-    <div className="w-full px-2 border-t border-slate-950 md:py-2 md:px-3">
+    <div className="w-full px-2 border-t border-slate-950 md:py-2.5 md:px-3">
       {/* profile Pic */}
       <button
         className="w-full flex items-center space-x-4"

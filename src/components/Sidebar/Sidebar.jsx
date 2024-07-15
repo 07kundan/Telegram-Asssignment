@@ -12,7 +12,7 @@ function Sidebar() {
     if (inView) {
       fetchNextPage();
     }
-    console.log("isinview", data);
+    // console.log("isinview", data);
   }, [inView]);
 
   useEffect(() => {

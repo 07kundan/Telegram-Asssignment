@@ -1,0 +1,10 @@
+/* styles.css */
+
+.custom-scrollbar {
+  /* Scrollbar width */
+  scrollbar-width: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}

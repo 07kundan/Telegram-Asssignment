@@ -11,23 +11,10 @@ export const getChatList = async (page = null) => {
     // if (page) url.searchParams.set("page", page);
     // console.log(url.href);
     const { data } = await axios.get(`${BASE_URL}?page=${page}`);
-    console.log("apidata", data?.data);
+    // console.log("apidata", data?.data);
     return data?.data;
   } catch (error) {
     console.log(error);
     throw error?.response?.data?.error;
-  }
-};
-
-//
-export const getChatList_2 = async (page) => {
-  try {
-    const response = await axios.get(`${BASE_URL}?page=${page}`);
-    setChats((prevChats) => [...prevChats, ...response.data.data]);
-    setHasMore(response.data.data.length > 0);
-    setLoading(false);
-  } catch (error) {
-    console.error("Error fetching data", error);
-    setLoading(false);
   }
 };

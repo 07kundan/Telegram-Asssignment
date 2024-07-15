@@ -10,6 +10,7 @@ const chatSectionSlice = createSlice({
   initialState,
   reducers: {
     setChatSectoin: (state, action) => {
+      state.chatname = null;
       state.chatname = action.payload;
       action.payload ? (state.isOpen = true) : (state.isOpen = false);
     },
